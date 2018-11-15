@@ -13,6 +13,11 @@ class SyntacticalAnalyzer
 	SyntacticalAnalyzer (char * filename);
 	~SyntacticalAnalyzer ();
     private:
+	int literal();
+	int quotedLit();
+	int moreTokens();
+	int paramList();
+	int elsePart();
 	LexicalAnalyzer * lex;
 	token_type token;
 };
