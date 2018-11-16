@@ -12,6 +12,7 @@ class SyntacticalAnalyzer
     public:
 	SyntacticalAnalyzer (char * filename);
 	~SyntacticalAnalyzer ();
+	
     private:
 	int literal();
 	int quotedLit();
