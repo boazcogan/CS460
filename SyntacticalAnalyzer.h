@@ -15,6 +15,11 @@ class SyntacticalAnalyzer
     private:
 	LexicalAnalyzer * lex;
 	token_type token;
+	int program();
+	int moreDefines();
+	int define();
+	int stmtList();
+	int stmt();
 };
 	
 #endif
