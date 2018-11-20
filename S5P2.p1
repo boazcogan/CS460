@@ -1,0 +1,12 @@
+	LPAREN_T        (
+	DEFINE_T        define
+	LPAREN_T        (
+	IDENT_T         func
+	RPAREN_T        )
+	SQUOTE_T        '
+	DEFINE_T        define
+	RPAREN_T        )
+	LPAREN_T        (
+	IDENT_T         func
+	RPAREN_T        )
+	EOF_T           

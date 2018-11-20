@@ -44,7 +44,7 @@ int SyntacticalAnalyzer::literal()
 int SyntacticalAnalyzer::quotedLit()
 {
 	int errors = 0;
-	if (token != IDENT_T && token != NUMLIT_T && token != STRLIT_T && token != CONS_T && token != IF_T && token != DISPLAY_T && token != NEWLINE_T && token != LISTOP_T && token != AND_T && token != OR_T && token != NOT_T && token != DEFINE_T && token != NUMBERP_T && token != LISTP_T && token != ZEROP_T && token != NULLP_T && token != STRINGP_T && token != PLUS_T && token != MINUS_T && token != DIV_T && token != MULT_T && token != MODULO_T && token != ROUND_T && token != EQUALTO_T && token != GT_T && token != LT_T && token != GTE_T && token != LTE_T && token != COND_T && token != ELSE_T)
+	if (token == IDENT_T || token == NUMLIT_T || token == STRLIT_T || token == CONS_T || token == IF_T || token == DISPLAY_T || token == NEWLINE_T || token == LISTOP_T || token == AND_T || token == OR_T || token == NOT_T || token == DEFINE_T || token == NUMBERP_T || token == LISTP_T || token == ZEROP_T || token == NULLP_T || token == STRINGP_T || token == PLUS_T || token == MINUS_T || token == DIV_T || token == MULT_T || token == MODULO_T || token == ROUND_T || token == EQUALTO_T || token == GT_T || token == LT_T || token == GTE_T || token == LTE_T || token == COND_T || token == ELSE_T)
 	{
 		// Rule 13 Used
 		errors += anyOtherToken();
@@ -128,7 +128,7 @@ int SyntacticalAnalyzer::moreDefines()
 int SyntacticalAnalyzer::moreTokens()
 {
 	int errors = 0;
-	if (token != IDENT_T && token != NUMLIT_T && token != STRLIT_T && token != CONS_T && token != IF_T && token != DISPLAY_T && token != NEWLINE_T && token != LISTOP_T && token != AND_T && token != OR_T && token != NOT_T && token != DEFINE_T && token != NUMBERP_T && token != LISTP_T && token != ZEROP_T && token != NULLP_T && token != STRINGP_T && token != PLUS_T && token != MINUS_T && token != DIV_T && token != MULT_T && token != MODULO_T && token != ROUND_T && token != EQUALTO_T && token != GT_T && token != LT_T && token != GTE_T && token != LTE_T && token != COND_T && token != ELSE_T)
+	if (token == IDENT_T || token == NUMLIT_T || token == STRLIT_T || token == CONS_T || token == IF_T || token == DISPLAY_T || token == NEWLINE_T || token == LISTOP_T || token == AND_T || token == OR_T || token == NOT_T || token == DEFINE_T || token == NUMBERP_T || token == LISTP_T || token == ZEROP_T || token == NULLP_T || token == STRINGP_T || token == PLUS_T || token == MINUS_T || token == DIV_T || token == MULT_T || token == MODULO_T || token == ROUND_T || token == EQUALTO_T || token == GT_T || token == LT_T || token == GTE_T || token == LTE_T || token == COND_T || token == ELSE_T)
 	{
 		// Rule 14 Used
 		errors += anyOtherToken();
@@ -171,44 +171,16 @@ int SyntacticalAnalyzer::elsePart()
 	{
 		errors += stmt();
 	}
+	else if (token == RPAREN_T)
+	{
+
+	}
 	else
 	{
 		errors++;
 		lex->ReportError("Terminal: ElsePart token expected; '" + lex->GetTokenName(token) + "' found.");
 	}
 	
-
-	if (token == LPAREN_T)
-	{
-		token = lex->GetToken();
-		errors += moreTokens();
-		if (token == RPAREN_T)
-		{
-			token = lex->GetToken();
-		}
-		else
-		{
-			lex->ReportError("Terminal: ElsePart token expected '" + lex->GetTokenName(token) + "' found.");
-			errors++;
-		}
-	}
-
-	else if (token == SQUOTE_T)
-	{
-		token = lex->GetToken();
-		errors += anyOtherToken();
-	}
-
-	else if (token != IDENT_T && token != NUMLIT_T && token != STRLIT_T && token != CONS_T && token != IF_T && token != DISPLAY_T && token != NEWLINE_T && token != LISTOP_T && token != AND_T && token != OR_T && token != NOT_T && token != DEFINE_T && token != NUMBERP_T && token != LISTP_T && token != ZEROP_T && token != NULLP_T && token != STRINGP_T && token != PLUS_T && token != MINUS_T && token != DIV_T && token != MULT_T && token != MODULO_T && token != ROUND_T && token != EQUALTO_T && token != GT_T && token != LT_T && token != GTE_T && token != LTE_T && token != COND_T && token != ELSE_T)
-	{
-		lex->ReportError("anyOtherToken expetokened; '" + lex->GetTokenName(token) + "' found.");
-		errors++;
-	}
-	else
-	{
-		token = lex->GetToken();
-	}
-	return errors;
 }
 
 int SyntacticalAnalyzer::anyOtherToken ()
@@ -225,7 +197,7 @@ int SyntacticalAnalyzer::anyOtherToken ()
 	      }
 	    else
 	      {
-		lex->ReportError("Terminal: RPAREN_T expetokened; '" + lex->GetTokenName(token) + "' found.");
+		lex->ReportError("Terminal: AnyOtherToken expetokened; '" + lex->GetTokenName(token) + "' found.");
 		errors++;
 	      }
 	  }

@@ -1,0 +1,19 @@
+Input file: S5P2.ss
+   1: (define (func)
+	LPAREN_T        (
+	DEFINE_T        define
+	LPAREN_T        (
+	IDENT_T         func
+	RPAREN_T        )
+   2:   'define
+	SQUOTE_T        '
+	DEFINE_T        define
+   3:   )
+	RPAREN_T        )
+   4: 
+   5: (func)
+	LPAREN_T        (
+	IDENT_T         func
+	RPAREN_T        )
+	EOF_T           
+0 errors found in input file

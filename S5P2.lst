@@ -1,0 +1,7 @@
+Input file: S5P2.ss
+   1: (define (func)
+   2:   'define
+   3:   )
+   4: 
+   5: (func)
+0 errors found in input file
