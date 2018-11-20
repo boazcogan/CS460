@@ -76,3 +76,35 @@ int SyntacticalAnalyzer::moreTokens()
 	}
 	return errors;
 }
+
+int SyntacticalAnalyzer::paramList()
+{
+	int errors = 0;
+	if (token == IDENT_T)
+	{
+		errors += paramList();
+	}
+	else if (token == RPAREN_T)
+	{
+
+	}
+	else
+	{
+		errors++;
+		lex->ReportError("Terminal: ParamList token expected; '" + lex->GetTokenName(token) + "' found.");
+	}
+}
+
+int SyntacticalAnalyzer::elsePart()
+{
+	int errors = 0;
+	if (token == IDENT_T || token == LPAREN_T || token == NUMLIT_T || token == STRLIT_T || token == SQUOTE_T)
+	{
+		errors += stmt();
+	}
+	else
+	{
+		errors++;	
+		lex->ReportError("Terminal: ElsePart token expected; '" + lex->GetTokenName(token) + "' found.");
+	}
+}
