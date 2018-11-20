@@ -148,7 +148,7 @@ int SyntacticalAnalyzer::define()
 int SyntacticalAnalyzer::stmtList()
 {
 	int errors = 0;
-	if ( token == IDENT_T || token == LPAREN_T )
+	if ( token == IDENT_T || token == LPAREN_T || token == NUMLIT || token == STRLIT_T || token == SQUOTE_T )
 	{
 		errors += stmt();
 		error += stmtList();
@@ -187,10 +187,14 @@ int SyntacticalAnalyzer::stmt()
 			errors++;
 		}
 	}
+	else if ( token == NUMLIT || token == STRLIT_T || token == SQUOTE_T )
+	{
+		errors += literal();
+	}
 	else
 	{
-		lex->ReportError("Terminal: IDENT_T token expected; '" + lex->GetTokenName(token) + "' found.");
-		errors+=literal();
+		lex->ReportError("Terminal: IDENT_T, LPAREN, or Literal token expected; '" + lex->GetTokenName(token) + "' found.");
+		errors++;
 	}
 	return errors;
 }
