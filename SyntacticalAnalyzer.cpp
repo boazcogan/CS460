@@ -217,22 +217,22 @@ int SyntacticalAnalyzer::anyOtherToken ()
 
 	if(token == LPAREN_T)
 	  {
-	    token = lex->NextTerminal();
-	    errors += more_tokens();
+	    token = lex->GetToken();
+	    errors += moreTokens();
 	    if(token == RPAREN_T)
 	      {
-		token = lex->NextTerminal();
+		token = lex->GetToken();
 	      }
 	    else
 	      {
-		lex->ReportError("Terminal: RPAREN_T expetokened; '" + token + "' found.");
+		lex->ReportError("Terminal: RPAREN_T expetokened; '" + lex->GetTokenName(token) + "' found.");
 		errors++;
 	      }
 	  }
 
-	else if(token == SQUOTE_t)
+	else if(token == SQUOTE_T)
           {
-            token = lex->NextTerminal();
+            token = lex->GetToken();
             errors += anyOtherToken();
 	    
           }
@@ -243,12 +243,12 @@ int SyntacticalAnalyzer::anyOtherToken ()
 		 && token != MODULO_T && token != ROUND_T && token != EQUALTO_T && token != GT_T && token != LT_T && token != GTE_T && token != LTE_T
 		 && token != COND_T  && token != ELSE_T )
 	  {
-	    lex->ReportError ("anyOtherToken expetokened; '" + token + "' found.");
+	    lex->ReportError ("anyOtherToken expetokened; '" + lex->GetTokenName(token) + "' found.");
 	    errors++;
 	  }
         else
 	  {
-	    token = lex->NextTerminal();
+	    token = lex->GetToken();
 	  }
         return errors;
 }
