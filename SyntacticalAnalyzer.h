@@ -15,6 +15,7 @@ class SyntacticalAnalyzer
     private:
 	LexicalAnalyzer * lex;
 	token_type token;
+	int any_other_token();
 };
 	
 #endif
