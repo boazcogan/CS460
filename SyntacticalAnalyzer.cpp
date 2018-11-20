@@ -66,7 +66,7 @@ int SyntacticalAnalyzer::moreDefines()
 			errors++;
 		}
 	}
-	else
+	else if ( token == DEFINE_T )
 	{
 		errors += define();
 		if ( token == LPAREN_T )
@@ -74,6 +74,10 @@ int SyntacticalAnalyzer::moreDefines()
 			token = lex->GetToken();
 			errors += moreDefines();
 		}
+	}
+	else
+	{
+		errors++;
 	}
 	return errors;
 }
@@ -138,6 +142,14 @@ int SyntacticalAnalyzer::stmtList()
 	{
 		errors += stmt();
 		error += stmtList();
+	}
+	else if ( token == RPAREN_T )
+	{
+		//lambda
+	}
+	else
+	{
+		errors++;
 	}
 	return errors;
 
