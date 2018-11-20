@@ -27,7 +27,11 @@ class SyntacticalAnalyzer
 	int anyOtherToken();
 	LexicalAnalyzer * lex;
 	token_type token;
-	int any_other_token();
+	int program();
+	int moreDefines();
+	int define();
+	int stmtList();
+	int stmt();
 };
 	
 #endif
