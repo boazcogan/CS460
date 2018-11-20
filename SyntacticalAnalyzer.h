@@ -21,6 +21,10 @@ class SyntacticalAnalyzer
 	int moreTokens();
 	int paramList();
 	int elsePart();
+	int stmtPair();
+	int stmtPairBody();
+	int action();
+	int anyOtherToken();
 	LexicalAnalyzer * lex;
 	token_type token;
 	int any_other_token();
