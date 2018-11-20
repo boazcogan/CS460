@@ -35,16 +35,19 @@ int SyntacticalAnalyzer::program()
 			}
 			else
 			{
+				lex->ReportError("Terminal: EOF_T token expected; '" + lex->GetTokenName(token) + "' found.");
 				errors++;
 			}
 		}
 		else
 		{
+			lex->ReportError("Terminal: LPAREN_T token expected; '" + lex->GetTokenName(token) + "' found.");
 			errors++;
 		}
 	}
 	else
 	{
+		lex->ReportError("Terminal: LPAREN_T token expected; '" + lex->GetTokenName(token) + "' found.");
 		errors++;
 	}
 	return errors;
@@ -63,6 +66,7 @@ int SyntacticalAnalyzer::moreDefines()
 		}
 		else
 		{
+			lex->ReportError("Terminal: RPAREN_T token expected; '" + lex->GetTokenName(token) + "' found.");
 			errors++;
 		}
 	}
@@ -77,6 +81,7 @@ int SyntacticalAnalyzer::moreDefines()
 	}
 	else
 	{
+		lex->ReportError("Terminal: DEFINE_T token expected; '" + lex->GetTokenName(token) + "' found.");
 		errors++;
 	}
 	return errors;
@@ -106,29 +111,34 @@ int SyntacticalAnalyzer::define()
 					}
 					else
 					{
+						lex->ReportError("Terminal: RPAREN_T token expected; '" + lex->GetTokenName(token) + "' found.");
 						errors++;
 					}
 				}
 				else
 				{
+					lex->ReportError("Terminal: RPAREN_T token expected; '" + lex->GetTokenName(token) + "' found.");
 					errors++;
 				}
 				
 			}
 			else
 			{
+				lex->ReportError("Terminal: IDENT_T token expected; '" + lex->GetTokenName(token) + "' found.");
 				errors++;
 			}
 			
 		}
 		else
 		{
+			lex->ReportError("Terminal: LPAREN_T token expected; '" + lex->GetTokenName(token) + "' found.");
 			errors++;
 		}
 
 	}
 	else
 	{
+		lex->ReportError("Terminal: DEFINE_T token expected; '" + lex->GetTokenName(token) + "' found.");
 		errors++;
 	}
 	return errors;
@@ -149,6 +159,7 @@ int SyntacticalAnalyzer::stmtList()
 	}
 	else
 	{
+		lex->ReportError("Terminal: PAREN_T or IDENT_T token expected; '" + lex->GetTokenName(token) + "' found.");
 		errors++;
 	}
 	return errors;
@@ -172,11 +183,13 @@ int SyntacticalAnalyzer::stmt()
 		}
 		else
 		{
+			lex->ReportError("Terminal: LPAREN_T token expected; '" + lex->GetTokenName(token) + "' found.");
 			errors++;
 		}
 	}
 	else
 	{
+		lex->ReportError("Terminal: IDENT_T token expected; '" + lex->GetTokenName(token) + "' found.");
 		errors+=literal();
 	}
 	return errors;
