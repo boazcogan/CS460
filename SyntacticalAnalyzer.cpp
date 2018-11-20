@@ -148,7 +148,7 @@ int SyntacticalAnalyzer::define()
 int SyntacticalAnalyzer::stmtList()
 {
 	int errors = 0;
-	if ( token == IDENT_T || token == LPAREN_T || token == NUMLIT || token == STRLIT_T || token == SQUOTE_T )
+	if ( token == IDENT_T || token == LPAREN_T || token == NUMLIT_T || token == STRLIT_T || token == SQUOTE_T )
 	{
 		errors += stmt();
 		error += stmtList();
@@ -187,7 +187,7 @@ int SyntacticalAnalyzer::stmt()
 			errors++;
 		}
 	}
-	else if ( token == NUMLIT || token == STRLIT_T || token == SQUOTE_T )
+	else if ( token == NUMLIT_T || token == STRLIT_T || token == SQUOTE_T )
 	{
 		errors += literal();
 	}
