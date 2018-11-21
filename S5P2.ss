@@ -1,5 +1,15 @@
+(define (test)
+  (if (number? 4)
+  (display (hello))
+  )
+)
+
+
 (define (func)
-  'define
+  (+ 4 (/ 34 (*12)))
+  (number? 34)
+  (string? hello)
+  (test)
   )
 
 (func)
