@@ -87,7 +87,7 @@ int SyntacticalAnalyzer::program() // Rule 1
 // Author of Function Below: Boaz Cogan
 int SyntacticalAnalyzer::moreDefines() // Rule 2-3
 {
-	p2file << "Entering More_defines function; current token is: " << lex->GetTokenName(token) << ", lexeme: " << lex->GetLexeme() << "\n";
+	p2file << "Entering More_Defines function; current token is: " << lex->GetTokenName(token) << ", lexeme: " << lex->GetLexeme() << "\n";
 	int errors = 0;
 	if (token == IDENT_T) // Check if rule 3 is used as IDENT_T will be the first expected token in rule 3
 	{
@@ -187,7 +187,7 @@ int SyntacticalAnalyzer::define() // Rule 4
 // Author of Function Below: Boaz Cogan
 int SyntacticalAnalyzer::stmtList() // Rule 5-6
 {
-	p2file << "Entering Stmt_list function; current token is: " << lex->GetTokenName(token) << ", lexeme: " << lex->GetLexeme() << "\n";
+	p2file << "Entering Stmt_List function; current token is: " << lex->GetTokenName(token) << ", lexeme: " << lex->GetLexeme() << "\n";
 	int errors = 0;
 	if (token == IDENT_T || token == LPAREN_T || token == NUMLIT_T || token == STRLIT_T || token == SQUOTE_T) // Check firsts of the current rule we are lloking at to determine the correct rule to apply
 	{
@@ -292,7 +292,7 @@ int SyntacticalAnalyzer::literal() // Rule 10-12
 // Author of Function Below: Jeff Hultman
 int SyntacticalAnalyzer::quotedLit() // Rule 13
 {
-	p2file << "Entering Quoted_lit function; current token is: " << lex->GetTokenName(token) << ", lexeme: " << lex->GetLexeme() << "\n";
+	p2file << "Entering Quoted_Lit function; current token is: " << lex->GetTokenName(token) << ", lexeme: " << lex->GetLexeme() << "\n";
 	int errors = 0;
 	if (token == IDENT_T || token == NUMLIT_T || token == STRLIT_T || token == CONS_T || token == IF_T || token == DISPLAY_T || token == NEWLINE_T ||
 		token == LISTOP_T || token == AND_T || token == OR_T || token == NOT_T || token == DEFINE_T || token == NUMBERP_T || token == LISTP_T || token == ZEROP_T ||
@@ -347,7 +347,7 @@ int SyntacticalAnalyzer::moreTokens() // Rule 14-15
 // Author of Function Below: Jeff Hultman
 int SyntacticalAnalyzer::paramList() // Rule 16-17
 {
-	p2file << "Entering Param_list function; current token is: " << lex->GetTokenName(token) << ", lexeme: " << lex->GetLexeme() << "\n";
+	p2file << "Entering Param_List function; current token is: " << lex->GetTokenName(token) << ", lexeme: " << lex->GetLexeme() << "\n";
 	int errors = 0;
 	if (token == IDENT_T)
 	{
@@ -396,7 +396,7 @@ int SyntacticalAnalyzer::elsePart() // Rule 18-19
 // Author of Function Below: Sergio Hernandez
 int SyntacticalAnalyzer::stmtPair() // Rule 20-21
 {
-	p2file << "Entering Stmt_pair function; current token is: " << lex->GetTokenName(token) << ", lexeme: " << lex->GetLexeme() << "\n";
+	p2file << "Entering Stmt_Pair function; current token is: " << lex->GetTokenName(token) << ", lexeme: " << lex->GetLexeme() << "\n";
 	int errors = 0;
 
 	if (token == LPAREN_T)
@@ -422,7 +422,7 @@ return errors;
 // Author of Function Below: Sergio Hernandez
 int SyntacticalAnalyzer::stmtPairBody() // Rule 22-23
 {
-	p2file << "Entering Stmt_pair_body function; current token is: " << lex->GetTokenName(token) << ", lexeme: " << lex->GetLexeme() << "\n";
+	p2file << "Entering Stmt_Pair_Body function; current token is: " << lex->GetTokenName(token) << ", lexeme: " << lex->GetLexeme() << "\n";
 	int errors = 0;
 	token = lex->GetToken();
 
@@ -663,7 +663,7 @@ return errors;
 // Author of Function Below: Sergio Hernandez
 int SyntacticalAnalyzer::anyOtherToken() // Rule 50-81
 {
-	p2file << "Entering Any_other_token function; current token is: " << lex->GetTokenName(token) << ", lexeme: " << lex->GetLexeme() << "\n";
+	p2file << "Entering Any_Other_Token function; current token is: " << lex->GetTokenName(token) << ", lexeme: " << lex->GetLexeme() << "\n";
 	int errors = 0;
 	if (token == LPAREN_T)
 	{
