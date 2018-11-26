@@ -1,69 +1,20 @@
 Input file: S5P2.ss
-   1: (define (test)
+   1: (define (funky v ls)
 	LPAREN_T        (
 	DEFINE_T        define
 	LPAREN_T        (
-	IDENT_T         test
+	IDENT_T         funky
+	IDENT_T         v
+	IDENT_T         ls
 	RPAREN_T        )
-   2:   (if (number? 4)
+   2: 	(cond 	((<= v 10)
 	LPAREN_T        (
-	IF_T            if
+	COND_T          cond
 	LPAREN_T        (
-	NUMBERP_T       number?
-	NUMLIT_T        4
-	RPAREN_T        )
-   3:   (display (hello))
 	LPAREN_T        (
-	DISPLAY_T       display
-	LPAREN_T        (
-	IDENT_T         hello
-	RPAREN_T        )
-	RPAREN_T        )
-   4:   )
-	RPAREN_T        )
-   5: )
-	RPAREN_T        )
-   6: 
-   7: 
-   8: (define (func)
-	LPAREN_T        (
-	DEFINE_T        define
-	LPAREN_T        (
-	IDENT_T         func
-	RPAREN_T        )
-   9:   (+ 4 (/ 34 (*12)))
-	LPAREN_T        (
-	PLUS_T          +
-	NUMLIT_T        4
-	LPAREN_T        (
-	DIV_T           /
-	NUMLIT_T        34
-	LPAREN_T        (
-	MULT_T          *
-	NUMLIT_T        12
-	RPAREN_T        )
-	RPAREN_T        )
-	RPAREN_T        )
-  10:   (number? 34)
-	LPAREN_T        (
-	NUMBERP_T       number?
-	NUMLIT_T        34
-	RPAREN_T        )
-  11:   (string? hello)
-	LPAREN_T        (
-	STRINGP_T       string?
-	IDENT_T         hello
-	RPAREN_T        )
-  12:   (test)
-	LPAREN_T        (
-	IDENT_T         test
-	RPAREN_T        )
-  13:   )
-	RPAREN_T        )
-  14: 
-  15: (func)
-	LPAREN_T        (
-	IDENT_T         func
-	RPAREN_T        )
-	EOF_T           
-0 errors found in input file
+	LTE_T           <=
+Error at 2,12: Terminal: LPAREN_T token expected; 'LTE_T' found.
+Error at 2,12: Terminal: PAREN_T or IDENT_T token expected; 'LTE_T' found.
+Error at 2,12: Terminal: RPAREN_T token expected; 'LTE_T' found.
+Error at 2,12: Terminal: LPAREN_T token expected; 'LTE_T' found.
+4 errors found in input file

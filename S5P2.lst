@@ -1,17 +1,8 @@
 Input file: S5P2.ss
-   1: (define (test)
-   2:   (if (number? 4)
-   3:   (display (hello))
-   4:   )
-   5: )
-   6: 
-   7: 
-   8: (define (func)
-   9:   (+ 4 (/ 34 (*12)))
-  10:   (number? 34)
-  11:   (string? hello)
-  12:   (test)
-  13:   )
-  14: 
-  15: (func)
-0 errors found in input file
+   1: (define (funky v ls)
+   2: 	(cond 	((<= v 10)
+Error at 2,12: Terminal: LPAREN_T token expected; 'LTE_T' found.
+Error at 2,12: Terminal: PAREN_T or IDENT_T token expected; 'LTE_T' found.
+Error at 2,12: Terminal: RPAREN_T token expected; 'LTE_T' found.
+Error at 2,12: Terminal: LPAREN_T token expected; 'LTE_T' found.
+4 errors found in input file

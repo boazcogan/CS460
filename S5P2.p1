@@ -1,52 +1,12 @@
 	LPAREN_T        (
 	DEFINE_T        define
 	LPAREN_T        (
-	IDENT_T         test
+	IDENT_T         funky
+	IDENT_T         v
+	IDENT_T         ls
 	RPAREN_T        )
 	LPAREN_T        (
-	IF_T            if
+	COND_T          cond
 	LPAREN_T        (
-	NUMBERP_T       number?
-	NUMLIT_T        4
-	RPAREN_T        )
 	LPAREN_T        (
-	DISPLAY_T       display
-	LPAREN_T        (
-	IDENT_T         hello
-	RPAREN_T        )
-	RPAREN_T        )
-	RPAREN_T        )
-	RPAREN_T        )
-	LPAREN_T        (
-	DEFINE_T        define
-	LPAREN_T        (
-	IDENT_T         func
-	RPAREN_T        )
-	LPAREN_T        (
-	PLUS_T          +
-	NUMLIT_T        4
-	LPAREN_T        (
-	DIV_T           /
-	NUMLIT_T        34
-	LPAREN_T        (
-	MULT_T          *
-	NUMLIT_T        12
-	RPAREN_T        )
-	RPAREN_T        )
-	RPAREN_T        )
-	LPAREN_T        (
-	NUMBERP_T       number?
-	NUMLIT_T        34
-	RPAREN_T        )
-	LPAREN_T        (
-	STRINGP_T       string?
-	IDENT_T         hello
-	RPAREN_T        )
-	LPAREN_T        (
-	IDENT_T         test
-	RPAREN_T        )
-	RPAREN_T        )
-	LPAREN_T        (
-	IDENT_T         func
-	RPAREN_T        )
-	EOF_T           
+	LTE_T           <=

@@ -424,7 +424,7 @@ int SyntacticalAnalyzer::stmtPairBody() // Rule 22-23
 {
 	p2file << "Entering Stmt_Pair_Body function; current token is: " << lex->GetTokenName(token) << ", lexeme: " << lex->GetLexeme() << "\n";
 	int errors = 0;
-	token = lex->GetToken();
+	// token = lex->GetToken();
 
 	if (token == ELSE_T)
 	{
