@@ -372,7 +372,7 @@ int SyntacticalAnalyzer::paramList() // Rule 16-17
 // Author of Function Below: Jeff Hultman
 int SyntacticalAnalyzer::elsePart() // Rule 18-19
 {
-	p2file << "Entering else_part function; current token is: " << lex->GetTokenName(token) << ", lexeme: " << lex->GetLexeme() << "\n";
+	p2file << "Entering Else_Part function; current token is: " << lex->GetTokenName(token) << ", lexeme: " << lex->GetLexeme() << "\n";
 	int errors = 0;
 	if (token == IDENT_T || token == LPAREN_T || token == NUMLIT_T || token == STRLIT_T || token == SQUOTE_T)
 	{
@@ -448,7 +448,7 @@ int SyntacticalAnalyzer::stmtPairBody() // Rule 22-23
 	{
 		p2file << "Using Rule 22\n";
 		rules[22] = 1;
-		// token = lex->GetToken();
+		// token = lex->GetT.oken();
 		errors += stmt();
 		errors += stmt();
 

@@ -1,12 +1,29 @@
 Input file: S5P2.ss
    1: (define (funky v ls)
    2: 	(cond 	((<= v 10)
-Error at 2,12: Terminal: IDENT_T, LPAREN, or Literal token expected; 'LTE_T' found.
-Error at 2,12: Terminal: IDENT_T, LPAREN, or Literal token expected; 'LTE_T' found.
-Error at 2,12: Terminal: RPAREN_T token expected; 'LTE_T' found.
-Error at 2,12: Terminal: stmt_pair expected; 'LTE_T' found.
-Error at 2,12: Terminal: LPAREN_T token expected; 'LTE_T' found.
-Error at 2,12: Terminal: PAREN_T or IDENT_T token expected; 'LTE_T' found.
-Error at 2,12: Terminal: RPAREN_T token expected; 'LTE_T' found.
-Error at 2,12: Terminal: LPAREN_T token expected; 'LTE_T' found.
-8 errors found in input file
+   3: 			(if (> v 5)
+   4: 				(* (+ v) (- v))
+   5: 				(round (/ v (modulo v 3)))
+   6: 			)) 
+   7: 		((= v 11) (cons v ls))
+   8: 		((< v 13) (car ls))
+   9: 		((or (number? v) (list? ls) (zero? v) (string? v)) v)
+  10: 		(else (cond ((null? ls) "empty")))
+  11: 	)
+  12: )
+  13: 
+  14: (define (main)
+  15: 	(if (and (>= 7 5) (not (>= 5 7)))
+  16: 		(display (funky 5 '(a 5 "hello world" cons if display
+Error at 16,22: Terminal: QuotedLit token expected; 'LPAREN_T' found.
+Error at 16,44: Terminal: PAREN_T or IDENT_T token expected; 'CONS_T' found.
+Error at 16,44: Terminal: LPAREN_T token expected; 'CONS_T' found.
+Error at 16,44: Terminal: PAREN_T or IDENT_T token expected; 'CONS_T' found.
+Error at 16,44: Terminal: LPAREN_T token expected; 'CONS_T' found.
+Error at 16,44: Terminal: LPAREN_T token expected; 'CONS_T' found.
+Error at 16,44: Terminal: ElsePart token expected; 'CONS_T' found.
+Error at 16,44: Terminal: LPAREN_T token expected; 'CONS_T' found.
+Error at 16,44: Terminal: PAREN_T or IDENT_T token expected; 'CONS_T' found.
+Error at 16,44: Terminal: RPAREN_T token expected; 'CONS_T' found.
+Error at 16,44: Terminal: EOF_T token expected; 'CONS_T' found.
+11 errors found in input file

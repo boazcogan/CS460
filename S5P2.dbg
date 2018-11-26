@@ -13,12 +13,158 @@ Input file: S5P2.ss
 	LPAREN_T        (
 	LPAREN_T        (
 	LTE_T           <=
-Error at 2,12: Terminal: IDENT_T, LPAREN, or Literal token expected; 'LTE_T' found.
-Error at 2,12: Terminal: IDENT_T, LPAREN, or Literal token expected; 'LTE_T' found.
-Error at 2,12: Terminal: RPAREN_T token expected; 'LTE_T' found.
-Error at 2,12: Terminal: stmt_pair expected; 'LTE_T' found.
-Error at 2,12: Terminal: LPAREN_T token expected; 'LTE_T' found.
-Error at 2,12: Terminal: PAREN_T or IDENT_T token expected; 'LTE_T' found.
-Error at 2,12: Terminal: RPAREN_T token expected; 'LTE_T' found.
-Error at 2,12: Terminal: LPAREN_T token expected; 'LTE_T' found.
-8 errors found in input file
+	IDENT_T         v
+	NUMLIT_T        10
+	RPAREN_T        )
+   3: 			(if (> v 5)
+	LPAREN_T        (
+	IF_T            if
+	LPAREN_T        (
+	GT_T            >
+	IDENT_T         v
+	NUMLIT_T        5
+	RPAREN_T        )
+   4: 				(* (+ v) (- v))
+	LPAREN_T        (
+	MULT_T          *
+	LPAREN_T        (
+	PLUS_T          +
+	IDENT_T         v
+	RPAREN_T        )
+	LPAREN_T        (
+	MINUS_T         -
+	IDENT_T         v
+	RPAREN_T        )
+	RPAREN_T        )
+   5: 				(round (/ v (modulo v 3)))
+	LPAREN_T        (
+	ROUND_T         round
+	LPAREN_T        (
+	DIV_T           /
+	IDENT_T         v
+	LPAREN_T        (
+	MODULO_T        modulo
+	IDENT_T         v
+	NUMLIT_T        3
+	RPAREN_T        )
+	RPAREN_T        )
+	RPAREN_T        )
+   6: 			)) 
+	RPAREN_T        )
+	RPAREN_T        )
+   7: 		((= v 11) (cons v ls))
+	LPAREN_T        (
+	LPAREN_T        (
+	EQUALTO_T       =
+	IDENT_T         v
+	NUMLIT_T        11
+	RPAREN_T        )
+	LPAREN_T        (
+	CONS_T          cons
+	IDENT_T         v
+	IDENT_T         ls
+	RPAREN_T        )
+	RPAREN_T        )
+   8: 		((< v 13) (car ls))
+	LPAREN_T        (
+	LPAREN_T        (
+	LT_T            <
+	IDENT_T         v
+	NUMLIT_T        13
+	RPAREN_T        )
+	LPAREN_T        (
+	LISTOP_T        car
+	IDENT_T         ls
+	RPAREN_T        )
+	RPAREN_T        )
+   9: 		((or (number? v) (list? ls) (zero? v) (string? v)) v)
+	LPAREN_T        (
+	LPAREN_T        (
+	OR_T            or
+	LPAREN_T        (
+	NUMBERP_T       number?
+	IDENT_T         v
+	RPAREN_T        )
+	LPAREN_T        (
+	LISTP_T         list?
+	IDENT_T         ls
+	RPAREN_T        )
+	LPAREN_T        (
+	ZEROP_T         zero?
+	IDENT_T         v
+	RPAREN_T        )
+	LPAREN_T        (
+	STRINGP_T       string?
+	IDENT_T         v
+	RPAREN_T        )
+	RPAREN_T        )
+	IDENT_T         v
+	RPAREN_T        )
+  10: 		(else (cond ((null? ls) "empty")))
+	LPAREN_T        (
+	ELSE_T          else
+	LPAREN_T        (
+	COND_T          cond
+	LPAREN_T        (
+	LPAREN_T        (
+	NULLP_T         null?
+	IDENT_T         ls
+	RPAREN_T        )
+	STRLIT_T        "empty"
+	RPAREN_T        )
+	RPAREN_T        )
+	RPAREN_T        )
+  11: 	)
+	RPAREN_T        )
+  12: )
+	RPAREN_T        )
+  13: 
+  14: (define (main)
+	LPAREN_T        (
+	DEFINE_T        define
+	LPAREN_T        (
+	IDENT_T         main
+	RPAREN_T        )
+  15: 	(if (and (>= 7 5) (not (>= 5 7)))
+	LPAREN_T        (
+	IF_T            if
+	LPAREN_T        (
+	AND_T           and
+	LPAREN_T        (
+	GTE_T           >=
+	NUMLIT_T        7
+	NUMLIT_T        5
+	RPAREN_T        )
+	LPAREN_T        (
+	NOT_T           not
+	LPAREN_T        (
+	GTE_T           >=
+	NUMLIT_T        5
+	NUMLIT_T        7
+	RPAREN_T        )
+	RPAREN_T        )
+	RPAREN_T        )
+  16: 		(display (funky 5 '(a 5 "hello world" cons if display
+	LPAREN_T        (
+	DISPLAY_T       display
+	LPAREN_T        (
+	IDENT_T         funky
+	NUMLIT_T        5
+	SQUOTE_T        '
+	LPAREN_T        (
+Error at 16,22: Terminal: QuotedLit token expected; 'LPAREN_T' found.
+	IDENT_T         a
+	NUMLIT_T        5
+	STRLIT_T        "hello world"
+	CONS_T          cons
+Error at 16,44: Terminal: PAREN_T or IDENT_T token expected; 'CONS_T' found.
+Error at 16,44: Terminal: LPAREN_T token expected; 'CONS_T' found.
+Error at 16,44: Terminal: PAREN_T or IDENT_T token expected; 'CONS_T' found.
+Error at 16,44: Terminal: LPAREN_T token expected; 'CONS_T' found.
+Error at 16,44: Terminal: LPAREN_T token expected; 'CONS_T' found.
+Error at 16,44: Terminal: ElsePart token expected; 'CONS_T' found.
+Error at 16,44: Terminal: LPAREN_T token expected; 'CONS_T' found.
+Error at 16,44: Terminal: PAREN_T or IDENT_T token expected; 'CONS_T' found.
+Error at 16,44: Terminal: RPAREN_T token expected; 'CONS_T' found.
+Error at 16,44: Terminal: EOF_T token expected; 'CONS_T' found.
+11 errors found in input file
