@@ -19,14 +19,10 @@ Input file: S5P2.ss
   18: 			    number? list? zero? null?
   19: 			    string? + - / * modulo round = > < >=
   20: 			    <= 'cond else)))
-Error at 20,11: Terminal: AnyOtherToken token expected; 'SQUOTE_T' found.
-Error at 20,11: Terminal: AnyOtherToken token expected; 'SQUOTE_T' found.
-Error at 20,20: Terminal: PAREN_T or IDENT_T token expected; 'ELSE_T' found.
-Error at 20,20: Terminal: LPAREN_T token expected; 'ELSE_T' found.
-Error at 20,20: Terminal: LPAREN_T token expected; 'ELSE_T' found.
-Error at 20,20: Terminal: ElsePart token expected; 'ELSE_T' found.
-Error at 20,20: Terminal: LPAREN_T token expected; 'ELSE_T' found.
-Error at 20,20: Terminal: PAREN_T or IDENT_T token expected; 'ELSE_T' found.
-Error at 20,20: Terminal: RPAREN_T token expected; 'ELSE_T' found.
-Error at 20,20: Terminal: EOF_T token expected; 'ELSE_T' found.
-10 errors found in input file
+  21: 	)
+  22: 	(newline)
+  23: )
+  24: 
+  25: (main)
+  26: 
+0 errors found in input file

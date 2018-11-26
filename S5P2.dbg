@@ -185,16 +185,24 @@ Input file: S5P2.ss
   20: 			    <= 'cond else)))
 	LTE_T           <=
 	SQUOTE_T        '
-Error at 20,11: Terminal: AnyOtherToken token expected; 'SQUOTE_T' found.
-Error at 20,11: Terminal: AnyOtherToken token expected; 'SQUOTE_T' found.
 	COND_T          cond
 	ELSE_T          else
-Error at 20,20: Terminal: PAREN_T or IDENT_T token expected; 'ELSE_T' found.
-Error at 20,20: Terminal: LPAREN_T token expected; 'ELSE_T' found.
-Error at 20,20: Terminal: LPAREN_T token expected; 'ELSE_T' found.
-Error at 20,20: Terminal: ElsePart token expected; 'ELSE_T' found.
-Error at 20,20: Terminal: LPAREN_T token expected; 'ELSE_T' found.
-Error at 20,20: Terminal: PAREN_T or IDENT_T token expected; 'ELSE_T' found.
-Error at 20,20: Terminal: RPAREN_T token expected; 'ELSE_T' found.
-Error at 20,20: Terminal: EOF_T token expected; 'ELSE_T' found.
-10 errors found in input file
+	RPAREN_T        )
+	RPAREN_T        )
+	RPAREN_T        )
+  21: 	)
+	RPAREN_T        )
+  22: 	(newline)
+	LPAREN_T        (
+	NEWLINE_T       newline
+	RPAREN_T        )
+  23: )
+	RPAREN_T        )
+  24: 
+  25: (main)
+	LPAREN_T        (
+	IDENT_T         main
+	RPAREN_T        )
+  26: 
+	EOF_T           
+0 errors found in input file
