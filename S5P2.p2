@@ -111,12 +111,12 @@ Exiting Stmt_List function; current token is: RPAREN_T
 Exiting Stmt_List function; current token is: RPAREN_T
 Exiting Action function; current token is: RPAREN_T
 Exiting Stmt function; current token is: LPAREN_T
-Entering else_part function; current token is: LPAREN_T, lexeme: (
+Entering Else_Part function; current token is: LPAREN_T, lexeme: (
 Using Rule 18
 Entering Stmt function; current token is: LPAREN_T, lexeme: (
 Using Rule 9
 Entering Action function; current token is: ROUND_T, lexeme: round
-Using Rule 36
+Using Rule 41
 Entering Stmt function; current token is: LPAREN_T, lexeme: (
 Using Rule 9
 Entering Action function; current token is: DIV_T, lexeme: /
@@ -506,7 +506,7 @@ Exiting Action function; current token is: CONS_T
 Exiting Stmt function; current token is: CONS_T
 Exiting Action function; current token is: CONS_T
 Exiting Stmt function; current token is: CONS_T
-Entering else_part function; current token is: CONS_T, lexeme: cons
+Entering Else_Part function; current token is: CONS_T, lexeme: cons
 Exiting Else_Part function; current token is: CONS_T
 Exiting Action function; current token is: CONS_T
 Exiting Stmt function; current token is: CONS_T

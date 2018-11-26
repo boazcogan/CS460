@@ -540,7 +540,7 @@ int SyntacticalAnalyzer::action() // Rule 24-49
 		}
 		else if (token == ROUND_T)
 		{
-			p2file << "Using Rule 36\n";
+			p2file << "Using Rule 41\n";
 			rules[36] = 1;
 		}
 		else
