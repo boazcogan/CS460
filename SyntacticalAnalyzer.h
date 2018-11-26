@@ -32,6 +32,7 @@ class SyntacticalAnalyzer
 	int define();
 	int stmtList();
 	int stmt();
+	int * rules;
 };
 	
 #endif

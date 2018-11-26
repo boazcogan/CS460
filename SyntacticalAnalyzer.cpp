@@ -15,6 +15,11 @@ using namespace std;
 SyntacticalAnalyzer::SyntacticalAnalyzer(char *filename)
 {
 
+	rules = new int[82];
+	for (int i = 0; i < 81; i++)
+	{
+		rules[i] = 0;
+	}
 	lex = new LexicalAnalyzer(filename);
 	token = lex->GetToken();
 	int errors = 0;
@@ -28,6 +33,7 @@ SyntacticalAnalyzer::~SyntacticalAnalyzer()
 // Author of Function Below: Boaz Cogan
 int SyntacticalAnalyzer::program() // Rule 1
 {
+	rules[1] = 1;
 	int errors = 0;
 	if (token == LPAREN_T) // Check if we are looking at the correct starting token
 	{
@@ -66,6 +72,7 @@ int SyntacticalAnalyzer::moreDefines() // Rule 2-3
 	int errors = 0;
 	if (token == IDENT_T) // Check if rule 3 is used as IDENT_T will be the first expected token in rule 3
 	{
+		rules[3] = 1;
 		token = lex->GetToken();
 		errors += stmtList(); // Apply rule 5 or 6
 		if (token == RPAREN_T)
@@ -80,6 +87,7 @@ int SyntacticalAnalyzer::moreDefines() // Rule 2-3
 	}
 	else if (token == DEFINE_T) // If rule 3 is not correct check if rule 2 is
 	{
+		rules[2] = 1;
 		errors += define(); // Apply rule 4
 		if (token == LPAREN_T)
 		{
@@ -97,6 +105,7 @@ int SyntacticalAnalyzer::moreDefines() // Rule 2-3
 // Author of Function Below: Boaz Cogan
 int SyntacticalAnalyzer::define() // Rule 4
 {
+	rules[4] = 1;
 	int errors = 0;
 	if (token == DEFINE_T) // Check for correct Token for the start of rule 4
 	{
@@ -154,11 +163,13 @@ int SyntacticalAnalyzer::stmtList() // Rule 5-6
 	int errors = 0;
 	if (token == IDENT_T || token == LPAREN_T || token == NUMLIT_T || token == STRLIT_T || token == SQUOTE_T) // Check firsts of the current rule we are lloking at to determine the correct rule to apply 
 	{
+		rules[5] = 1;
 		errors += stmt();
 		errors += stmtList();
 	}
 	else if (token == RPAREN_T)
 	{
+		rules[6] = 1;
 		//lambda
 	}
 	else
@@ -174,10 +185,12 @@ int SyntacticalAnalyzer::stmt() // Rule 7-9
 	int errors = 0;
 	if (token == IDENT_T)
 	{
+		rules[8] = 1;
 		token = lex->GetToken();
 	}
 	else if (token == LPAREN_T)
 	{
+		rules[9] = 1;
 		token = lex->GetToken();
 		errors += action();
 		if (token == RPAREN_T)
@@ -192,6 +205,7 @@ int SyntacticalAnalyzer::stmt() // Rule 7-9
 	}
 	else if (token == NUMLIT_T || token == STRLIT_T || token == SQUOTE_T)
 	{
+		rules[7] = 1;
 		errors += literal();
 	}
 	else
@@ -207,11 +221,20 @@ int SyntacticalAnalyzer::literal() // Rule 10-12
 	int errors = 0;
 	if (token == NUMLIT_T || token == STRLIT_T)
 	{
+		if (token == NUMLIT_T)
+		{
+			rules[10] = 1;
+		}
+		else
+		{
+			rules[11] = 1;
+		}
 		// Apply rule 10 or 11
 		token = lex->GetToken();
 	}
 	else if (token == SQUOTE_T)
 	{
+		rules[12] = 1;
 		// Apply rule
 		token = lex->GetToken();
 		errors += quotedLit();
@@ -231,6 +254,7 @@ int SyntacticalAnalyzer::quotedLit() // Rule 13
 		token == NULLP_T || token == STRINGP_T || token == PLUS_T || token == MINUS_T || token == DIV_T || token == MULT_T || token == MODULO_T || token == ROUND_T ||
 		token == EQUALTO_T || token == GT_T || token == LT_T || token == GTE_T || token == LTE_T || token == COND_T || token == ELSE_T)
 	{
+		rules[13] = 1;
 		// Rule 13 Used
 		errors += anyOtherToken();
 	}
@@ -249,12 +273,14 @@ int SyntacticalAnalyzer::moreTokens() // Rule 14-15
 		token == NULLP_T || token == STRINGP_T || token == PLUS_T || token == MINUS_T || token == DIV_T || token == MULT_T || token == MODULO_T || token == ROUND_T ||
 		token == EQUALTO_T || token == GT_T || token == LT_T || token == GTE_T || token == LTE_T || token == COND_T || token == ELSE_T)
 	{
+		rules[14]=1;
 		// Rule 14 Used
 		errors += anyOtherToken();
 		errors += moreTokens();
 	}
 	else if (token == RPAREN_T)
 	{
+		rules[15]=1;
 		// Rule 15 used
 		// Lambda
 	}
@@ -271,10 +297,12 @@ int SyntacticalAnalyzer::paramList() // Rule 16-17
 	int errors = 0;
 	if (token == IDENT_T)
 	{
+		rules[16]=1;
 		errors += paramList();
 	}
 	else if (token == RPAREN_T)
 	{
+		rules[17]=1;
 	}
 	else
 	{
@@ -288,10 +316,12 @@ int SyntacticalAnalyzer::elsePart() // Rule 18-19
 	int errors = 0;
 	if (token == IDENT_T || token == LPAREN_T || token == NUMLIT_T || token == STRLIT_T || token == SQUOTE_T)
 	{
+		rules[18]=1;
 		errors += stmt();
 	}
 	else if (token == RPAREN_T)
 	{
+		rules[19]=1;
 	}
 	else
 	{
@@ -306,11 +336,13 @@ int SyntacticalAnalyzer::stmtPair() // Rule 20-21
 
 	if (token == LPAREN_T)
 	{
+		rules[20]=1;
 		token = lex->GetToken();
 		errors += stmtPairBody();
 	}
 	else if (token == RPAREN_T)
 	{
+		rules[21]=1;
 	}
 	else
 	{
@@ -326,6 +358,7 @@ int SyntacticalAnalyzer::stmtPairBody() // Rule 22-23
 
 	if (token == ELSE_T)
 	{
+		rules[23]=1;
 		token = lex->GetToken();
 		errors += stmt();
 
@@ -342,6 +375,7 @@ int SyntacticalAnalyzer::stmtPairBody() // Rule 22-23
 	}
 	else if (token == NUMLIT_T || token == STRLIT_T || token == SQUOTE_T)
 	{
+		rules[22]=1;
 		errors += stmt();
 		errors += stmt();
 
@@ -365,6 +399,7 @@ int SyntacticalAnalyzer::action() // Rule 24-49
 
 	if (token == IF_T)
 	{
+		rules[24]=1;
 		token = lex->GetToken();
 		errors += stmt();
 		errors += stmt();
@@ -373,6 +408,7 @@ int SyntacticalAnalyzer::action() // Rule 24-49
 
 	else if (token == COND_T)
 	{
+		rules[25]=1;
 		token = lex->GetToken();
 		if (token == LPAREN_T)
 		{
@@ -389,12 +425,56 @@ int SyntacticalAnalyzer::action() // Rule 24-49
 	else if (token == LISTOP_T || token == NOT_T || token == NUMBERP_T || token == LISTP_T || token == ZEROP_T || token == NULLP_T || token == STRINGP_T ||
 			 token == ROUND_T || token == DISPLAY_T)
 	{
+		if (token == LISTOP_T)
+		{
+			rules[26]=1;
+		}
+		else if (token == NOT_T)
+		{
+			rules[30]=1;
+		}
+		else if (token == NUMBERP_T)
+		{
+			rules[31] = 1;
+		}
+		else if (token == LISTP_T)
+		{
+			rules[32]=1;
+		}
+		else if (token == ZEROP_T)
+		{
+			rules[33]=1;
+		}
+		else if (token == NULLP_T)
+		{
+			rules[34]=1;
+		}
+		else if (token == STRINGP_T)
+		{
+			rules[35]=1;
+		}
+		else if (token == ROUND_T)
+		{
+			rules[36]=1;
+		}
+		else
+		{
+			rules[48]=1;
+		}
 		token = lex->GetToken();
 		errors += stmt();
 	}
 	//<stmt> <stmt>
 	else if (token == CONS_T || token == MODULO_T)
 	{
+		if (token == CONS_T)
+		{
+			rules[27]=1;
+		}
+		else
+		{
+			rules[40] = 1;
+		}
 		token = lex->GetToken();
 		errors += stmt();
 		errors += stmt();
@@ -403,6 +483,47 @@ int SyntacticalAnalyzer::action() // Rule 24-49
 	else if (token == AND_T || token == OR_T || token == PLUS_T || token == MULT_T || token == EQUALTO_T || token == GT_T || token == LT_T || token == GTE_T ||
 			 token == LTE_T || token == IDENT_T)
 	{
+		if (token == AND_T)
+		{
+			rules[28]=1;
+		}
+		else if (token == OR_T)
+		{
+			rules[29]=1;
+		}
+		else if (token == PLUS_T)
+		{
+			rules[36]=1;
+		}
+		else if (token == MULT_T)
+		{
+			rules[39]=1;
+		}
+		else if (token == EQUALTO_T)
+		{
+			rules[42]=1;
+		}
+		else if (token == GT_T)
+		{
+			rules[43]=1;
+		}
+		else if (token == LT_T)
+		{
+			rules[44] = 1;
+		}
+		else if (token == GTE_T)
+		{
+			rules[45] = 1;
+		}
+		else if (token == LTE_T)
+		{
+			rules[46] = 1;
+		}
+		else if (token == IDENT_T)
+		{
+			rules[47]=1;
+		}
+
 		token = lex->GetToken();
 		errors += stmtList();
 	}
@@ -410,6 +531,14 @@ int SyntacticalAnalyzer::action() // Rule 24-49
 	//<stmt> <stmt_list>
 	else if (token == MINUS_T || token == DIV_T)
 	{
+		if (token == MINUS_T)
+		{
+			rules[37] = 1;
+		}
+		else
+		{
+			rules[38] = 1;
+		}
 		token = lex->GetToken();
 		errors += stmt();
 		errors += stmtList();
@@ -418,6 +547,7 @@ int SyntacticalAnalyzer::action() // Rule 24-49
 	//NEWLINE_T
 	else if (token == NEWLINE_T)
 	{
+		rules[49]=1;
 		token = lex->GetToken();
 	}
 
@@ -431,9 +561,9 @@ int SyntacticalAnalyzer::action() // Rule 24-49
 int SyntacticalAnalyzer::anyOtherToken() // Rule 50-81
 {
 	int errors = 0;
-
 	if (token == LPAREN_T)
 	{
+		rules[50]=1;
 		token = lex->GetToken();
 		errors += moreTokens();
 		if (token == RPAREN_T)
@@ -449,6 +579,7 @@ int SyntacticalAnalyzer::anyOtherToken() // Rule 50-81
 
 	else if (token == SQUOTE_T)
 	{
+		rules[79]=1;
 		token = lex->GetToken();
 		errors += anyOtherToken();
 	}
@@ -463,6 +594,126 @@ int SyntacticalAnalyzer::anyOtherToken() // Rule 50-81
 	}
 	else
 	{
+		if (token == IDENT_T)
+		{
+			rules[51] = 1;
+		}
+		else if (token == NUMLIT_T)
+		{
+			rules[52]=1;
+		}
+		else if (token == STRLIT_T)
+		{
+			rules[53] = 1;
+		}
+		else if (token == CONS_T)
+		{
+			rules[54]=1;
+		}
+		else if (token == IF_T)
+		{
+			rules[55]=1;
+		}
+		else if (token == DISPLAY_T)
+		{
+			rules[56]=1;
+		}
+		else if (token == NEWLINE_T)
+		{
+			rules[57]=1;
+		}
+		else if (token == LISTOP_T)
+		{
+			rules[58]=1;
+		}
+		else if (token == AND_T)
+		{
+			rules[59]=1;
+		}
+		else if (token == OR_T)
+		{
+			rules[60]=1;
+		}
+		else if (token == NOT_T)
+		{
+			rules[61]=1;
+		}
+		else if (token == DEFINE_T)
+		{
+			rules[62]=1;
+		}
+		else if (token == NUMBERP_T)
+		{
+			rules[63]=1;
+		}
+		else if (token == LISTP_T)
+		{
+			rules[64]=1;
+		}
+		else if (token == ZEROP_T)
+		{
+			rules[65]=1;
+		}
+		else if (token == NULLP_T)
+		{
+			rules[66] = 1;
+		}
+		else if (token == STRINGP_T)
+		{
+			rules[67]=1;
+		}
+		else if (token == PLUS_T)
+		{
+			rules[68]=1;
+		}
+		else if (token == MINUS_T)
+		{
+			rules[69]=1;
+		}
+		else if (token == DIV_T)
+		{
+			rules[70]=1;
+		}
+		else if (token == MULT_T)
+		{
+			rules[71]=1;
+		}
+		else if (token == MODULO_T)
+		{
+			rules[72]=1;
+		}
+		else if (token == ROUND_T)
+		{
+			rules[73]=1;
+		}
+		else if (token == EQUALTO_T)
+		{
+			rules[74]=1;
+		}
+		else if (token == GT_T)
+		{
+			rules[75]=1;
+		}
+		else if (token == LT_T)
+		{
+			rules[76]=1;
+		}
+		else if (token == GTE_T)
+		{
+			rules[77]=1;
+		}
+		else if (token == LTE_T)
+		{
+			rules[78]=1;
+		}
+		else if (token == COND_T)
+		{
+			rules[80]=1;
+		}
+		else if (token == ELSE_T)
+		{
+			rules[81]=1;
+		}
 		token = lex->GetToken();
 	}
 	return errors;
