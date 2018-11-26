@@ -16,6 +16,7 @@ class SyntacticalAnalyzer
 	~SyntacticalAnalyzer ();
 	
     private:
+	ofstream p2file;
 	int literal();
 	int quotedLit();
 	int moreTokens();

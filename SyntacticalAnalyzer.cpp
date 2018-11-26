@@ -16,7 +16,7 @@ SyntacticalAnalyzer::SyntacticalAnalyzer(char *filename)
 {
 
 	rules = new int[82];
-	for (int i = 0; i < 81; i++)
+	for (int i = 0; i < 82; i++)
 	{
 		rules[i] = 0;
 	}
@@ -24,6 +24,22 @@ SyntacticalAnalyzer::SyntacticalAnalyzer(char *filename)
 	token = lex->GetToken();
 	int errors = 0;
 	errors += program();
+	string name = filename;
+	string p2name = name.substr (0, name.length()-3) + ".p2"; 
+	p2file.open (p2name.c_str());
+	p2file << "Rules used: ";
+	for (int i = 0; i<82; i++)
+	{
+		if (rules[i] == 1 && i < 81)
+		{
+			p2file<<i<<",";
+		}
+		else if(rules[i]==1)
+		{
+			p2file<<i<<"\n";
+		}
+	}
+
 }
 
 SyntacticalAnalyzer::~SyntacticalAnalyzer()
