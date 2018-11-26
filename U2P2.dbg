@@ -1,0 +1,22 @@
+Input file: U2P2.ss
+   1: (define (test2)
+	LPAREN_T        (
+	DEFINE_T        define
+	LPAREN_T        (
+	IDENT_T         test2
+	RPAREN_T        )
+   2:   (< (> 5 <= 6) )
+	LPAREN_T        (
+	LT_T            <
+	LPAREN_T        (
+	GT_T            >
+	NUMLIT_T        5
+	LTE_T           <=
+Error at 2,12: Terminal: PAREN_T or IDENT_T token expected; 'LTE_T' found.
+Error at 2,12: Terminal: LPAREN_T token expected; 'LTE_T' found.
+Error at 2,12: Terminal: PAREN_T or IDENT_T token expected; 'LTE_T' found.
+Error at 2,12: Terminal: LPAREN_T token expected; 'LTE_T' found.
+Error at 2,12: Terminal: PAREN_T or IDENT_T token expected; 'LTE_T' found.
+Error at 2,12: Terminal: RPAREN_T token expected; 'LTE_T' found.
+Error at 2,12: Terminal: LPAREN_T token expected; 'LTE_T' found.
+7 errors found in input file
