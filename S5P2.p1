@@ -139,3 +139,30 @@
 	NUMLIT_T        5
 	STRLIT_T        "hello world"
 	CONS_T          cons
+	IF_T            if
+	DISPLAY_T       display
+	NEWLINE_T       newline
+	LISTOP_T        cadr
+	AND_T           and
+	OR_T            or
+	NOT_T           not
+	DEFINE_T        define
+	NUMBERP_T       number?
+	LISTP_T         list?
+	ZEROP_T         zero?
+	NULLP_T         null?
+	STRINGP_T       string?
+	PLUS_T          +
+	MINUS_T         -
+	DIV_T           /
+	MULT_T          *
+	MODULO_T        modulo
+	ROUND_T         round
+	EQUALTO_T       =
+	GT_T            >
+	LT_T            <
+	GTE_T           >=
+	LTE_T           <=
+	SQUOTE_T        '
+	COND_T          cond
+	ELSE_T          else

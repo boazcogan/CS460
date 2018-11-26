@@ -152,19 +152,49 @@ Input file: S5P2.ss
 	NUMLIT_T        5
 	SQUOTE_T        '
 	LPAREN_T        (
-Error at 16,22: Terminal: QuotedLit token expected; 'LPAREN_T' found.
 	IDENT_T         a
 	NUMLIT_T        5
 	STRLIT_T        "hello world"
 	CONS_T          cons
-Error at 16,44: Terminal: PAREN_T or IDENT_T token expected; 'CONS_T' found.
-Error at 16,44: Terminal: LPAREN_T token expected; 'CONS_T' found.
-Error at 16,44: Terminal: PAREN_T or IDENT_T token expected; 'CONS_T' found.
-Error at 16,44: Terminal: LPAREN_T token expected; 'CONS_T' found.
-Error at 16,44: Terminal: LPAREN_T token expected; 'CONS_T' found.
-Error at 16,44: Terminal: ElsePart token expected; 'CONS_T' found.
-Error at 16,44: Terminal: LPAREN_T token expected; 'CONS_T' found.
-Error at 16,44: Terminal: PAREN_T or IDENT_T token expected; 'CONS_T' found.
-Error at 16,44: Terminal: RPAREN_T token expected; 'CONS_T' found.
-Error at 16,44: Terminal: EOF_T token expected; 'CONS_T' found.
-11 errors found in input file
+	IF_T            if
+	DISPLAY_T       display
+  17: 			    newline cadr and or not define 
+	NEWLINE_T       newline
+	LISTOP_T        cadr
+	AND_T           and
+	OR_T            or
+	NOT_T           not
+	DEFINE_T        define
+  18: 			    number? list? zero? null?
+	NUMBERP_T       number?
+	LISTP_T         list?
+	ZEROP_T         zero?
+	NULLP_T         null?
+  19: 			    string? + - / * modulo round = > < >=
+	STRINGP_T       string?
+	PLUS_T          +
+	MINUS_T         -
+	DIV_T           /
+	MULT_T          *
+	MODULO_T        modulo
+	ROUND_T         round
+	EQUALTO_T       =
+	GT_T            >
+	LT_T            <
+	GTE_T           >=
+  20: 			    <= 'cond else)))
+	LTE_T           <=
+	SQUOTE_T        '
+Error at 20,11: Terminal: AnyOtherToken token expected; 'SQUOTE_T' found.
+Error at 20,11: Terminal: AnyOtherToken token expected; 'SQUOTE_T' found.
+	COND_T          cond
+	ELSE_T          else
+Error at 20,20: Terminal: PAREN_T or IDENT_T token expected; 'ELSE_T' found.
+Error at 20,20: Terminal: LPAREN_T token expected; 'ELSE_T' found.
+Error at 20,20: Terminal: LPAREN_T token expected; 'ELSE_T' found.
+Error at 20,20: Terminal: ElsePart token expected; 'ELSE_T' found.
+Error at 20,20: Terminal: LPAREN_T token expected; 'ELSE_T' found.
+Error at 20,20: Terminal: PAREN_T or IDENT_T token expected; 'ELSE_T' found.
+Error at 20,20: Terminal: RPAREN_T token expected; 'ELSE_T' found.
+Error at 20,20: Terminal: EOF_T token expected; 'ELSE_T' found.
+10 errors found in input file
