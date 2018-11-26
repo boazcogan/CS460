@@ -444,10 +444,11 @@ int SyntacticalAnalyzer::stmtPairBody() // Rule 22-23
 			errors++;
 		}
 	}
-	else if (token == NUMLIT_T || token == STRLIT_T || token == SQUOTE_T || token == LPAREN_T)
+	else if (token == NUMLIT_T || token == STRLIT_T || token == SQUOTE_T || token == LPAREN_T || token == IDENT_T)
 	{
 		p2file << "Using Rule 22\n";
 		rules[22] = 1;
+		token = lex->GetToken();
 		errors += stmt();
 		errors += stmt();
 
@@ -458,7 +459,7 @@ int SyntacticalAnalyzer::stmtPairBody() // Rule 22-23
 		}
 		else
 		{
-			lex->ReportError("Terminal: RPAREN_T expetokened; '" + lex->GetTokenName(token) + "' found.");
+			lex->ReportError("Terminal: RPAREN_T token expected; '" + lex->GetTokenName(token) + "' found.");
 			errors++;
 		}
 		errors += stmtPair();
@@ -677,7 +678,7 @@ int SyntacticalAnalyzer::anyOtherToken() // Rule 50-81
 		}
 		else
 		{
-			lex->ReportError("Terminal: AnyOtherToken expetokened; '" + lex->GetTokenName(token) + "' found.");
+			lex->ReportError("Terminal: AnyOtherToken token expected; '" + lex->GetTokenName(token) + "' found.");
 			errors++;
 		}
 	}
@@ -695,7 +696,7 @@ int SyntacticalAnalyzer::anyOtherToken() // Rule 50-81
 			 token != NULLP_T && token != STRINGP_T && token != PLUS_T && token != MINUS_T && token != DIV_T && token != MULT_T && token != MODULO_T && token != ROUND_T &&
 			 token != EQUALTO_T && token != GT_T && token != LT_T && token != GTE_T && token != LTE_T && token != COND_T && token != ELSE_T)
 	{
-		lex->ReportError("anyOtherToken expetokened; '" + lex->GetTokenName(token) + "' found.");
+		lex->ReportError("anyOtherToken token expected; '" + lex->GetTokenName(token) + "' found.");
 		errors++;
 	}
 	else
