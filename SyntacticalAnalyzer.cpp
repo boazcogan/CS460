@@ -353,6 +353,7 @@ int SyntacticalAnalyzer::paramList() // Rule 16-17
 	{
 		p2file << "Using rule 16\n";
 		rules[16] = 1;
+		token = lex->GetToken();
 		errors += paramList();
 	}
 	else if (token == RPAREN_T)
