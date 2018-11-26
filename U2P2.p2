@@ -1,1 +1,25 @@
-Rules used: 1'4'5'7'9'10'17'43'44'
+Entering Program function; current token is: LPAREN_T, lexeme: (
+Using rule 1
+Entering define function; current token is: DEFINE_T, lexeme: define
+Using rule 4
+Entering param_list function; current token is: RPAREN_T, lexeme: )
+Using rule 17
+Entering stmt function; current token is: LPAREN_T, lexeme: (
+Using rule 9
+Entering action function; current token is: LT_T, lexeme: <
+Using rule 44
+Entering stmt_list function; current token is: LPAREN_T, lexeme: (
+Using rule 5
+Entering stmt function; current token is: LPAREN_T, lexeme: (
+Using rule 9
+Entering action function; current token is: GT_T, lexeme: >
+Using rule 43
+Entering stmt_list function; current token is: NUMLIT_T, lexeme: 5
+Using rule 5
+Entering stmt function; current token is: NUMLIT_T, lexeme: 5
+Using rule 7
+Entering literal function; current token is: NUMLIT_T, lexeme: 5
+Using rule 10
+Entering stmt_list function; current token is: LTE_T, lexeme: <=
+Entering stmt_list function; current token is: LTE_T, lexeme: <=
+Entering stmt_list function; current token is: LTE_T, lexeme: <=
