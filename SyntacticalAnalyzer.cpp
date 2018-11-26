@@ -448,7 +448,7 @@ int SyntacticalAnalyzer::stmtPairBody() // Rule 22-23
 	{
 		p2file << "Using Rule 22\n";
 		rules[22] = 1;
-		token = lex->GetToken();
+		// token = lex->GetToken();
 		errors += stmt();
 		errors += stmt();
 

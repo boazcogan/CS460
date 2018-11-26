@@ -13,8 +13,12 @@ Input file: S5P2.ss
 	LPAREN_T        (
 	LPAREN_T        (
 	LTE_T           <=
+Error at 2,12: Terminal: IDENT_T, LPAREN, or Literal token expected; 'LTE_T' found.
+Error at 2,12: Terminal: IDENT_T, LPAREN, or Literal token expected; 'LTE_T' found.
+Error at 2,12: Terminal: RPAREN_T token expected; 'LTE_T' found.
+Error at 2,12: Terminal: stmt_pair expected; 'LTE_T' found.
 Error at 2,12: Terminal: LPAREN_T token expected; 'LTE_T' found.
 Error at 2,12: Terminal: PAREN_T or IDENT_T token expected; 'LTE_T' found.
 Error at 2,12: Terminal: RPAREN_T token expected; 'LTE_T' found.
 Error at 2,12: Terminal: LPAREN_T token expected; 'LTE_T' found.
-4 errors found in input file
+8 errors found in input file

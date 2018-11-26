@@ -2,11 +2,11 @@ Entering Program function; current token is: LPAREN_T, lexeme: (
 Using Rule 1
 Entering Define function; current token is: DEFINE_T, lexeme: define
 Using Rule 4
-Entering Param_list function; current token is: IDENT_T, lexeme: v
+Entering Param_List function; current token is: IDENT_T, lexeme: v
 Using Rule 16
-Entering Param_list function; current token is: IDENT_T, lexeme: ls
+Entering Param_List function; current token is: IDENT_T, lexeme: ls
 Using Rule 16
-Entering Param_list function; current token is: RPAREN_T, lexeme: )
+Entering Param_List function; current token is: RPAREN_T, lexeme: )
 Using Rule 17
 Exiting Param_List function; current token is: RPAREN_T
 Exiting Param_List function; current token is: RPAREN_T
@@ -15,11 +15,18 @@ Entering Stmt function; current token is: LPAREN_T, lexeme: (
 Using Rule 9
 Entering Action function; current token is: COND_T, lexeme: cond
 Using Rule 25
-Entering Stmt_pair_body function; current token is: LPAREN_T, lexeme: (
+Entering Stmt_Pair_Body function; current token is: LPAREN_T, lexeme: (
+Using Rule 22
+Entering Stmt function; current token is: LTE_T, lexeme: <=
+Exiting Stmt function; current token is: LTE_T
+Entering Stmt function; current token is: LTE_T, lexeme: <=
+Exiting Stmt function; current token is: LTE_T
+Entering Stmt_Pair function; current token is: LTE_T, lexeme: <=
+Exiting Stmt_Pair function; current token is: LTE_T
 Exiting Stmt_Pair_Body function; current token is: LTE_T
 Exiting Action function; current token is: LTE_T
 Exiting Stmt function; current token is: LTE_T
-Entering Stmt_list function; current token is: LTE_T, lexeme: <=
+Entering Stmt_List function; current token is: LTE_T, lexeme: <=
 Exiting Stmt_List function; current token is: LTE_T
 Exiting Define function; current token is: LTE_T
 Exiting Program function; current token is: LTE_T
