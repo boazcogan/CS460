@@ -444,7 +444,7 @@ int SyntacticalAnalyzer::stmtPairBody() // Rule 22-23
 			errors++;
 		}
 	}
-	else if (token == NUMLIT_T || token == STRLIT_T || token == SQUOTE_T)
+	else if (token == NUMLIT_T || token == STRLIT_T || token == SQUOTE_T || token == LPAREN_T)
 	{
 		p2file << "Using Rule 22\n";
 		rules[22] = 1;
